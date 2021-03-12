@@ -10,6 +10,20 @@ JavaScript entrypoint is at [`public/index.html`](./public/index.html).
 - [`wasm-pack`](https://rustwasm.github.io/docs/wasm-pack)
 - [`make`](https://www.gnu.org/software/make) (optional)
 
+## Recursion Limit
+
+The recursion limit should most likely be increased.
+
+It can be done by specifying a value for `recursion_limit` attribute at the
+beginning of [`src/lib.rs`](./src/lib.rs).
+For example this line sets the recursion limit to 512.
+
+```rust
+#![recursion_limit = "512"]
+```
+
+See more at [Limits - The Rust Reference](https://doc.rust-lang.org/reference/attributes/limits.html).
+
 ## Usage
 
 ### Download
@@ -30,7 +44,8 @@ degit rasmusmerzin/yew-template [project_name]
 
 > [`make`](https://www.gnu.org/software/make) required
 
-- `build` (default) - build `src` to `public/build` directory and remove lib related files
+- `build` (default) - build `src` to `public/build` directory and remove lib
+  related files
 - `clean` - remove `public/build` directory
 
 ### Serve
